@@ -43,7 +43,7 @@ const Login = () => {
   return (
     <div className="flex justify-end space-x-4 items-center">
       <NavLink display="Sign in" route="/"></NavLink>
-      <button className="px-6 py-2 bg-red-700 rounded-xl hidden md:flex hover:bg-red-900 hover:bg-opacity-95 transition-colors duration-200 ease-in-out">
+      <button className="px-6 py-2 bg-red-800 rounded-xl hidden md:flex hover:bg-red-700  transition-colors duration-200 ease-in-out">
         Join
       </button>
     </div>
@@ -90,7 +90,7 @@ const FlyOutMenu = (props) => {
 
 const NavLink = (props) => {
   return (
-    <div className=" w-min px-2 py-2 rounded-lg hover:bg-gray-300 hover:bg-opacity-25 transition-colors duration-200 ease-in-out">
+    <div className="flex flex-col items-center group w-min px-2 py-2 rounded-lg">
       <Link
         href={`/${props.route}`}
         className="text-black text-lg lg:text-xl text-nowrap"
@@ -98,6 +98,7 @@ const NavLink = (props) => {
       >
         {props.display}
       </Link>
+      <span className="w-0 h-[2px] group-hover:w-full bg-red-800 duration-300 rounded-md"></span>
     </div>
   );
 };
