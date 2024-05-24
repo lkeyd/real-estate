@@ -2,9 +2,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import AgentCard from "../components/AgentCard";
 import PropertyDescription from "../components/PropertyDescription";
 import Inspections from "../components/Inspections";
+import AgentComponent from "./AgentComponent";
 
 export default function propertyInfo(props) {
   const [data, setData] = useState(null);
@@ -31,22 +31,18 @@ export default function propertyInfo(props) {
 
   if (!loading) {
     const property = data.find((property) => property.id === props.id);
-
+    const agentIndex = Math.floor(Math.random() * 4);
     return (
       <div className="flex flex-col md:flex-row">
         <div className="flex flex-col w-max-5xl m-4 pr-8 border-r-0 md:border-r-2 border-black border-opacity-30">
           <div className="flex flex-col border-b-2  border-black border-opacity-30 pb-4 ">
-            <h1 className="text-3xl text-black opacity-80 font-bold">
+            <h1 className="text-3xl text-gray-800 font-bold">
               {property.city}
             </h1>
             <div className="flex items-center space-x-3">
-              <p className="text-xl text-black opacity-80">
-                {property.address}
-              </p>
-              <span className="w-2 h-2 bg-black opacity-80 rounded-full"></span>
-              <p className="text-xl text-black opacity-80 font-bold">
-                {property.type}
-              </p>
+              <p className="text-xl text-gray-800">{property.address}</p>
+              <span className="w-2 h-2 bg-gray-800 rounded-full"></span>
+              <p className="text-xl text-gray-800 font-bold">{property.type}</p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4 pt-4 border-b-2 border-black border-opacity-30 pb-4">
@@ -58,7 +54,7 @@ export default function propertyInfo(props) {
                 width={24}
                 className="opacity-80"
               ></Image>
-              <p className="text-xl text-black opacity-80">
+              <p className="text-xl text-gray-800">
                 {property.beds} {property.beds === 1 ? "bedroom" : "bedrooms"}
               </p>
             </div>
@@ -70,7 +66,7 @@ export default function propertyInfo(props) {
                 width={24}
                 className="opacity-80"
               ></Image>
-              <p className="text-xl text-black opacity-80">
+              <p className="text-xl text-gray-800">
                 {property.baths}{" "}
                 {property.baths === 1 ? "bathroom" : "bathrooms"}
               </p>
@@ -83,7 +79,7 @@ export default function propertyInfo(props) {
                 width={24}
                 className="opacity-80"
               ></Image>
-              <p className="text-xl text-black opacity-80">
+              <p className="text-xl text-gray-800">
                 {property.parking}{" "}
                 {property.parking === 1 ? "carport" : "carports"}
               </p>
@@ -96,18 +92,20 @@ export default function propertyInfo(props) {
                 width={24}
                 className="opacity-60"
               ></Image>
-              <p className="text-xl text-black opacity-80">
+              <p className="text-xl text-gray-800">
                 {property.floorspace}m<sup>2</sup> of floorspace
               </p>
             </div>
           </div>
-          <PropertyDescription />
+          <div className="overflow-hidden border-b-2 border-black border-opacity-30 pb-4">
+            <PropertyDescription />
+          </div>
           <div>
             <Inspections></Inspections>
           </div>
         </div>
-        <div className="px-4 py-4">
-          <AgentCard />
+        <div className="px-4 py-4 z-100">
+          <AgentComponent agentIndex={agentIndex}/>
         </div>
       </div>
     );

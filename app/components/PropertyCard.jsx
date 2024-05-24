@@ -1,23 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import PropertyIcon from "./PropertyIcon";
 
-const PropertyIcon = (props) => {
-  return (
-    <div className="flex justify-center items-center space-x-1">
-      <p className="text-black text-bold text-xl text-opacity-80">
-        {props.property[props.icon]}
-      </p>
-      <Image
-        src={`/images/${props.icon}.svg`}
-        alt={`${props.icon}`}
-        height={24}
-        width={24}
-        className="opacity-80"
-      ></Image>
-    </div>
-  );
-};
 
 export default function PropertyCard(props) {
   const property = props.object
@@ -44,12 +29,12 @@ export default function PropertyCard(props) {
           <PropertyIcon icon="parking" property={property}></PropertyIcon>
         </div>
         <div className="flex items-center space-x-2">
-          <p className="text-black text-xl font-bold text-opacity-80 pl-2">
+          <p className="text-gray-800 text-xl font-bold  pl-2">
             {property.city}
           </p>
-          <p className="text-black opacity-80 text-xl">{property.area}</p>
+          <p className="text-gray-800 text-xl">{property.area}</p>
         </div>
-        <div className="text-black opacity-80 text-xl pl-2">
+        <div className="text-gray-800 text-xl pl-2">
           ${property.price.toLocaleString()}
         </div>
       </div>

@@ -33,7 +33,7 @@ export default function PropertyImageSliderModule(props) {
       <div className="flex justify-center pt-12">
         <div>
           {props.heading ? (
-            <h2 className="text-black font-bold text-4xl opacity-80 pb-4">
+            <h2 className="text-gray-800 font-bold text-3xl pb-4">
               {props.heading}
             </h2>
           ) : (

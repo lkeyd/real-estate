@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import PropertyCard from "./PropertyCard";
+import AgentCard from "./AgentCard";
 import Image from "next/image";
 
-export default function CardSlider(props) {
-  const [position, setPosition] = useState(1);
+export default function AgentSlider(props) {
   const [numberOfDisplayImages, setNumberOfDisplayImages] = useState(3);
   const [containerWidth, setContainerWidth] = useState(0);
+  const [position, setPosition] = useState(1);
   const sliderRef = useRef(null);
   const containerRef = useRef(null);
   const parentRef = useRef(null);
@@ -51,7 +51,7 @@ export default function CardSlider(props) {
         setNumberOfDisplayImages(
           Math.floor(
             parentActualWidth /
-              ((imageWidth + 2 * borderWidth + imageSpacing * 3))
+              (imageWidth + 2 * borderWidth + imageSpacing * 3)
           )
         );
       }
@@ -70,7 +70,6 @@ export default function CardSlider(props) {
   }, []);
 
   const handleNextClick = (direction) => {
-    console.log(numberOfDisplayImages);
     if (direction === "right") {
       if (position < props.objects.length - numberOfDisplayImages + 1) {
         setPosition(position + 1);
@@ -96,20 +95,13 @@ export default function CardSlider(props) {
           ref={sliderRef}
           className={`flex space-x-12 duration-300 ease-in-out`}
         >
-          {props.objects.map((property, index) => {
-            return (
-              <PropertyCard
-                key={index}
-                object={property}
-                width={imageWidth}
-                height={imageHeight}
-              ></PropertyCard>
-            );
+          {props.objects.map((agentIndex) => {
+            return <AgentCard agent={agentIndex}></AgentCard>;
           })}
         </div>
         <button
           onClick={() => handleNextClick("right")}
-          className="group hover:scale-110 hover:bg-opacity-80 duration-200 absolute top-1/4 right-2 flex items-center justify-center bg-white bg-opacity-60 rounded-full w-12 h-12 "
+          className="group hover:scale-110 hover:bg-opacity-80 duration-200 absolute top-1/2 right-2 flex items-center justify-center bg-gray-400 bg-opacity-60 rounded-full w-12 h-12 "
         >
           <Image
             src="/images/chevronright.svg"
@@ -121,7 +113,7 @@ export default function CardSlider(props) {
         </button>
         <button
           onClick={() => handleNextClick("left")}
-          className="group hover:scale-110 hover:bg-opacity-80 duration-200 absolute top-1/4 left-2 flex items-center justify-center bg-white bg-opacity-60 rounded-full w-12 h-12 "
+          className="group hover:scale-110 hover:bg-opacity-80 duration-200 absolute top-1/2 left-2 flex items-center justify-center bg-gray-400 bg-opacity-60 rounded-full w-12 h-12 "
         >
           <Image
             src="/images/chevronleft.svg"

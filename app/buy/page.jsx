@@ -1,15 +1,22 @@
-"use client";
 import React from "react";
-import HeroModule from "../modules/HeroModule";
 import CardSliderModule from "../modules/CardSliderModule";
+import PropertySearch from "../components/PropertySearch";
+import HeroModule from "../modules/HeroModule";
+import PropertyGridModule from "../modules/PropertyGridModule";
+import PhoneAppModule from "../modules/PhoneAppModule";
 
 export default function BuyPage() {
-
   return (
     <div className="w-full flex justify-center">
       <div className="w-full max-w-7xl flex flex-col">
-        <HeroModule className="bg-opacity-50"></HeroModule>
-        <div className="pt-12">
+        <HeroModule></HeroModule>
+        <div className="relative w-full flex justify-center h-32 pb-52">
+          <div className="absolute -top-32 w-full max-w-5xl mx-16">
+            <PropertySearch></PropertySearch>
+          </div>
+        </div>
+        <PropertyGridModule criteria={{ intent: "sell" }} mode="sale"></PropertyGridModule>
+        <div className="py-32">
           <CardSliderModule
             criteria={{ intent: "sell", featured: true }}
             heading="Featured properties for sale"
@@ -20,6 +27,7 @@ export default function BuyPage() {
             numberOfDisplayImages={3}
           />
         </div>
+        <PhoneAppModule></PhoneAppModule>
       </div>
     </div>
   );

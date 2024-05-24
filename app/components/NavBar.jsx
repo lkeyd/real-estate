@@ -8,7 +8,7 @@ const navlinks = [
   { display: "Buy", route: "buy" },
   { display: "Rent", route: "rent" },
   { display: "Sell", route: "sell" },
-  { display: "Find agents", route: "agents" },
+  { display: "Our agents", route: "agents" },
 ];
 
 const Logo = () => {
@@ -20,9 +20,10 @@ const Logo = () => {
           alt="House icon"
           width={64}
           height={64}
+          className="text-gray-800 fill-gray-800 stroke-gray-800"
         ></Image>
       </Link>
-      <Link href="/" className="text-3xl text-black font-bold text-nowrap">
+      <Link href="/" className="text-3xl text-gray-800 font-bold text-nowrap">
         Prime Property
       </Link>
     </div>
@@ -93,7 +94,7 @@ const NavLink = (props) => {
     <div className="flex flex-col items-center group w-min px-2 py-2 rounded-lg">
       <Link
         href={`/${props.route}`}
-        className="text-black text-lg lg:text-xl text-nowrap"
+        className="text-gray-800 text-lg lg:text-xl text-nowrap"
         onClick={props.handleClick}
       >
         {props.display}

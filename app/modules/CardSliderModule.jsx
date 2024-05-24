@@ -41,7 +41,7 @@ export default function CardSliderModule(props) {
       <div>
         <div>
           {props.heading ? (
-            <h2 className="text-black font-bold text-4xl opacity-90 pb-4">
+            <h2 className="text-gray-800 font-bold text-3xl pb-8">
               {props.heading}
             </h2>
           ) : (

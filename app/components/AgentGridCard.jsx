@@ -29,7 +29,7 @@ export default function AgentCard(props) {
     const agent = agents[props.agent];
     return (
       <div className="">
-        <div className="relative flex flex-col w-96 rounded-md border-black border-2 border-opacity-50 overflow-hidden shadow-xl">
+        <div className="relative flex flex-col w-96 border-black border-l-2 border-opacity-20 overflow-hidden">
           <div className="flex justify-end bg-gray-800 h-16 items-center pr-4">
             <p className="text-white text-xl font-bold">Prime Property</p>
           </div>
@@ -42,7 +42,7 @@ export default function AgentCard(props) {
             ></Image>
           </div>
           <div className="flex flex-col w-full justify-center items-center">
-            <div className="flex w-full flex-col pr-4 pt-2 pb-16">
+            <div className="flex w-full flex-col pr-4 pt-2 pb-8">
               <p className="text-gray-800 text-xl font-bold flex justify-end">
                 {agent.name}
               </p>
