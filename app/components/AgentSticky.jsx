@@ -54,20 +54,6 @@ export default function AgentSticky(props) {
     };
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("./data.json");
-        const json = await response.json();
-      } catch{
-        console.log("There has been an error fetching the data")
-      } finally {
-        setLoading(false)
-      }
-
-    };
-  }, []);
-
   if (!loading && agents) {
     const isBottomStuck =
       viewportBottomHeight < entirePageHeight - footerHeight;

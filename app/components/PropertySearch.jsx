@@ -6,7 +6,7 @@ const SearchButton = (props) => {
   return (
     <button
       onClick={props.onClick}
-      className="py-2 px-4 text-2xl text-black w-full"
+      className="py-2 px-4 text-lg lg:text-2xl text-black w-full"
     >
       {props.children}
     </button>
@@ -46,12 +46,13 @@ export default function PropertySearch({ params }) {
   };
 
   useEffect(() => {
-    setInputText(search);
-    console.log(search);
-  }, []);
+    if (search !== null && search !== undefined) {
+      setInputText(search);
+    }
+  }, [search]);
 
   return (
-    <div className="flex flex-col bg-white w-auto shadow-lg rounded-sm p-16 max-w-5xl w-full">
+    <div className="flex flex-col bg-white w-auto shadow-lg rounded-sm px-4 md:px-8 lg:px-16 py-8 max-w-5xl mx-8 lg:mx-0">
       <div className="flex pb-2">
         <div className="flex flex-col items-center -space-y-1">
           <div className="relative">
@@ -78,15 +79,15 @@ export default function PropertySearch({ params }) {
         <input
           onChange={handleInputChange}
           type="text"
-          placeholder="Try a location or a school or project name"
+          placeholder="Try a location or a school name"
           value={inputText}
           ref={inputRef}
-          className="h-24 w-full border-gray-800 border-opacity-20 border-2
-          text-gray-800 text-xl indent-4"
+          className="h-16 lg:h-20 w-full border-gray-800 border-opacity-20 border-2
+          text-gray-800 text-sm md:text-xl indent-4"
         />
         <button
           onClick={handleSearchClick}
-          className="bg-red-800 text-white text-xl px-8 rounded-lg hover:bg-red-700 transition-colors duration-200 ease-in-out"
+          className="bg-red-800 text-white text-lg lg:text-xl px-2 lg:px-4 rounded-lg hover:bg-red-700 transition-colors duration-200 ease-in-out"
         >
           Search
         </button>

@@ -50,35 +50,37 @@ export default function AgentCard(props) {
                 {agent.info}
               </p>
             </div>
-            <div className="flex w-64 rounded-md justify-center py-2">
-              <Link
-                href=""
-                className="flex justify-center w-full bg-green-500 rounded-md py-2 space-x-2"
-              >
-                <Image
-                  src="/images/email.svg"
-                  alt="email"
-                  width={24}
-                  height={24}
-                ></Image>
-                <p className="text-white text-xl font-bold">Enquire</p>
-              </Link>
-            </div>
-            <div className="flex w-64 rounded-md justify-center py-2">
-              <Link
-                href=""
-                className="flex justify-center w-full bg-white rounded-md py-2 space-x-2 border-gray-800 border-2"
-              >
-                <Image
-                  src="/images/call.svg"
-                  alt="call"
-                  width={24}
-                  height={24}
-                ></Image>
-                <p className="text-gray-800 font-bold text-xl">
-                  {agent.number}
-                </p>
-              </Link>
+            <div className="flex justify-center space-x-4 w-full px-2">
+              <div className="flex w-32 rounded-md justify-center py-2">
+                <Link
+                  href=""
+                  className="flex justify-center w-full bg-green-500 rounded-md py-2 space-x-2"
+                >
+                  <Image
+                    src="/images/email.svg"
+                    alt="email"
+                    width={24}
+                    height={24}
+                  ></Image>
+                  <p className="text-white text-xl font-bold">Enquire</p>
+                </Link>
+              </div>
+              <div className="flex w-auto rounded-md justify-center py-2">
+                <Link
+                  href=""
+                  className="flex justify-center w-auto bg-white rounded-md px-2 py-2 space-x-2 border-gray-800 border-2"
+                >
+                  <Image
+                    src="/images/call.svg"
+                    alt="call"
+                    width={24}
+                    height={24}
+                  ></Image>
+                  <p className="text-gray-800 font-bold text-xl">
+                    {agent.number}
+                  </p>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

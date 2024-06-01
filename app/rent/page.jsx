@@ -15,7 +15,11 @@ export default function RentPage() {
             <PropertySearch></PropertySearch>
           </div>
         </div>
-        <PropertyGridModule criteria={{ intent: "rent" }} mode="rent"></PropertyGridModule>
+        <PropertyGridModule
+          criteria={{ intent: "rent" }}
+          mode="rent"
+        ></PropertyGridModule>
+
         <div className="py-32">
           <CardSliderModule
             criteria={{ intent: "rent", featured: true }}
@@ -27,6 +31,7 @@ export default function RentPage() {
             numberOfDisplayImages={3}
           />
         </div>
+
         <PhoneAppModule></PhoneAppModule>
       </div>
     </div>

@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 const navlinks = [
   { display: "Buy", route: "buy" },
   { display: "Rent", route: "rent" },
-  { display: "Sell", route: "sell" },
+  //{ display: "Sell", route: "sell" },
   { display: "Our agents", route: "agents" },
 ];
 

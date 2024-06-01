@@ -4,6 +4,7 @@ import PropertySearch from "../components/PropertySearch";
 import HeroModule from "../modules/HeroModule";
 import PropertyGridModule from "../modules/PropertyGridModule";
 import PhoneAppModule from "../modules/PhoneAppModule";
+import useSearchTerm from "../hooks/useSearchTerm";
 
 export default function BuyPage() {
   return (
@@ -15,8 +16,12 @@ export default function BuyPage() {
             <PropertySearch></PropertySearch>
           </div>
         </div>
-        <PropertyGridModule criteria={{ intent: "sell" }} mode="sale"></PropertyGridModule>
-        <div className="py-32">
+        <PropertyGridModule
+          criteria={{ intent: "sell" }}
+          mode="sale"
+        ></PropertyGridModule>
+
+        <div className="">
           <CardSliderModule
             criteria={{ intent: "sell", featured: true }}
             heading="Featured properties for sale"
@@ -27,6 +32,7 @@ export default function BuyPage() {
             numberOfDisplayImages={3}
           />
         </div>
+
         <PhoneAppModule></PhoneAppModule>
       </div>
     </div>

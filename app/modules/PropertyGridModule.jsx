@@ -24,22 +24,23 @@ export default function PropertyGridModule(props) {
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
   const search = searchParams.get("search");
-  const resultsPerPage = 5;
+  const resultsPerPage = 3;
   const [page, setPage] = useState(0);
   const [firstPropertyIndex, setFirstPropertyIndex] = useState(0);
-  const [finalPropertyIndex, setFinalPropertyIndex] = useState(
-    resultsPerPage - 1
-  );
+  const [finalPropertyIndex, setFinalPropertyIndex] = useState(resultsPerPage);
   const [displayArray, setDisplayArray] = useState([]);
   let filteredProperties = [];
 
   const handlePageClick = (props) => {
-    console.log(displayArray)
+    const tempFirstPropertyIndex = props * resultsPerPage;
     setPage(props);
-    setFirstPropertyIndex(props * resultsPerPage);
-    setFinalPropertyIndex(props * resultsPerPage + resultsPerPage -1);
+    setFirstPropertyIndex(tempFirstPropertyIndex);
+    setFinalPropertyIndex(tempFirstPropertyIndex + resultsPerPage);
     setDisplayArray(
-      filteredProperties.slice(firstPropertyIndex, finalPropertyIndex)
+      filteredProperties.slice(
+        tempFirstPropertyIndex,
+        tempFirstPropertyIndex + resultsPerPage
+      )
     );
   };
 
@@ -56,18 +57,18 @@ export default function PropertyGridModule(props) {
       }
     };
 
-    // Fetch data only if it's not already cached
     if (!data) {
       fetchData();
     }
   }, []);
 
   useEffect(() => {
+    console.log("we in");
     const tempArray = filteredProperties;
-    setDisplayArray(tempArray.slice(firstPropertyIndex, finalPropertyIndex))
+    setDisplayArray(tempArray.slice(0, resultsPerPage));
   }, [loading]);
 
-  if (!loading && search) {
+  if (!loading) {
     filteredProperties = !props.criteria
       ? data
       : data.filter((property) => {
@@ -80,34 +81,38 @@ export default function PropertyGridModule(props) {
     const numberOfProperties = filteredProperties.length;
     const numberOfPages = Math.ceil(numberOfProperties / resultsPerPage);
     const pagesArray = Array.from({ length: numberOfPages });
-    console.log(displayArray)
+    console.log(displayArray);
 
-    return (
-      <div className="flex flex-col items-center space-y-12">
-        <h1 className="flex w-full text-3xl text-gray-800 font-bold">{`There are ${numberOfProperties} properties for ${props.mode} matching '${search}'`}</h1>
-        <div className="flex flex-col w-full space-y-2 h-auto">
-          {displayArray.map((property, index) => {
-            return (
-              <PropertyGridCard
-                property={property}
-                key={index}
-              ></PropertyGridCard>
-            );
-          })}
+    if (search) {
+      return (
+        <div className="flex flex-col items-center space-y-12 pb-32">
+          <h1 className="flex w-full text-3xl text-gray-800 font-bold">{`There are ${numberOfProperties} properties for ${props.mode} matching '${search}'`}</h1>
+          <div
+            className={`grid grid-cols-1 grid-rows-3 w-full space-y-2 h-auto`}
+          >
+            {displayArray.map((property, index) => {
+              return (
+                <PropertyGridCard
+                  property={property}
+                  key={index}
+                ></PropertyGridCard>
+              );
+            })}
+          </div>
+          <div className="flex space-x-4">
+            {pagesArray.map((_, index) => {
+              return (
+                <PageButton
+                  key={index}
+                  index={index}
+                  page={page}
+                  onClick={() => handlePageClick(index)}
+                ></PageButton>
+              );
+            })}
+          </div>
         </div>
-        <div className="flex space-x-4">
-          {pagesArray.map((_, index) => {
-            return (
-              <PageButton
-                key={index}
-                index={index}
-                page={page}
-                onClick={() => handlePageClick(index)}
-              ></PageButton>
-            );
-          })}
-        </div>
-      </div>
-    );
+      );
+    }
   }
 }
