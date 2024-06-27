@@ -4,7 +4,6 @@ import PropertySearch from "../components/PropertySearch";
 import HeroModule from "../modules/HeroModule";
 import PropertyGridModule from "../modules/PropertyGridModule";
 import PhoneAppModule from "../modules/PhoneAppModule";
-import useSearchTerm from "../hooks/useSearchTerm";
 
 export default function BuyPage() {
   return (
@@ -20,20 +19,7 @@ export default function BuyPage() {
           criteria={{ intent: "sell" }}
           mode="sale"
         ></PropertyGridModule>
-
-        <div className="">
-          <CardSliderModule
-            criteria={{ intent: "sell", featured: true }}
-            heading="Featured properties for sale"
-            imageWidth={384}
-            imageHeight={256}
-            imageSpacing={12}
-            borderWidth={2}
-            numberOfDisplayImages={3}
-          />
-        </div>
-
-        <PhoneAppModule></PhoneAppModule>
+        
       </div>
     </div>
   );
